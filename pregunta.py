@@ -24,8 +24,8 @@ def clean_data():
     df.estrato=df.estrato.astype(int)
     
     
-    df.línea_credito=[str.lower(linea.strip().replace("-", " ").replace("_", " ").replace(". ", ".")) for linea in df["línea_credito"]]
-    df.fecha_de_beneficio = [datetime.strptime(date, "%d/%m/%Y") if bool(re.search(r"\d{1,2}/\d{2}/\d{4}", date))else datetime.strptime(date, "%Y/%m/%d")for date in df.fecha_de_beneficio]
+    df["línea_credito"] = [str.lower(linea.strip().replace("-", " ").replace("_", " ").replace(". ", ".")) for linea in df["línea_credito"]]
+    df.fecha_de_beneficio = [datetime.strptime(date, "%d/%m/%Y") if bool(re.search(r"\d{1,2}/\d{2}/\d{4}", date)) else datetime.strptime(date, "%Y/%m/%d") for date in df.fecha_de_beneficio]
     df.monto_del_credito = [int(monto.replace("$ ", "").replace(".00", "").replace(",", "")) for monto in df.monto_del_credito]
     
     
