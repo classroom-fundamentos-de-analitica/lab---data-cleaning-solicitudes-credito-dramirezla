@@ -13,6 +13,6 @@ def clean_data():
 
     df = df.drop_duplicates()
 
-    df = df.fillna(df.mean())
+    df = df.fillna(0)
 
     return df
