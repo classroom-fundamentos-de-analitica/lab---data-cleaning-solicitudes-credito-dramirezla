@@ -10,9 +10,9 @@ import pandas as pd
 
 def clean_data():
     df = pd.read_csv("solicitudes_credito.csv", sep=";")
-
+    df = df.apply(lambda x: x.astype(str).str.lower())    
+    df = df.replace("_", " ", regex=True)
+    df = df.replace("-", " ", regex=True)
     df = df.drop_duplicates()
-
-    df = df.fillna(0)
 
     return df
