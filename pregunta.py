@@ -8,13 +8,11 @@ correctamente. Tenga en cuenta datos faltantes y duplicados.
 """
 import pandas as pd
 
-
 def clean_data():
-
     df = pd.read_csv("solicitudes_credito.csv", sep=";")
 
-    #
-    # Inserte su código aquí
-    #
+    df = df.drop_duplicates()
+
+    df = df.fillna(df.mean())
 
     return df
